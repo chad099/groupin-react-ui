@@ -7,9 +7,14 @@ import Input from '../../components/inputs/Input';
 import {required} from '../../validations';
 import Logo from '../../assets/images/Logo.png';
 import {Link} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { fetchLoginUser } from '../../redux/modules/auth';
+
 let Signup = props => {
     const {handleSubmit, history} = props;
+    const dispatch = useDispatch();
     const onSubmit = prop => {
+        dispatch(fetchLoginUser(prop));
         history.push("/")
     }
     return (
@@ -51,7 +56,7 @@ let Signup = props => {
                   validate={required}
                 />
                 <CustomButton type="submit" fluid size="large">
-                  Login
+                  Submit
                 </CustomButton>
               </Segment>
             </Form>

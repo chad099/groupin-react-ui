@@ -7,12 +7,17 @@ import Input from '../../components/inputs/Input';
 import {required} from '../../validations';
 import Logo from '../../assets/images/Logo.png';
 import { Link } from 'react-router-dom';
+import {fetchLoginUser} from '../../redux/modules/auth'
+import { useDispatch } from 'react-redux';
 
 let Login = (props) => {
     const {handleSubmit, history} = props;
+    const dispatch = useDispatch();
     const onSubmit = prop => {
+      dispatch(fetchLoginUser(prop));
       history.push("/");
     }
+
     return (
         <div className="ui-login">
         <Grid textAlign="center" verticalAlign="middle" className="login-form">
